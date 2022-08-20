@@ -8,7 +8,7 @@ pipeline {
                         sh 'helm repo add bitnami https://charts.bitnami.com/bitnami'
                         sh 'helm repo update'
                         sh 'helm upgrade --install demo bitnami/nginx --set service.type=LoadBalancer'
-                        sh 'helm history demo'
+                        sh 'helm uninstall demo'
                         sh "kubectl get pods,svc"
                         sh "sleep 10"
                         sh "kubectl get pods,svc"
