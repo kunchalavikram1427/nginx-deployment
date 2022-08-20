@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Get Pods') {
             steps {
-                sh 'mkdir -p  ./kube/config'
+                sh 'mkdir -p  ./kube'
                 sh "cat $my_kubeconfig > ./kube/config"
                 sh "kubectl get pods"
                 sh "kubectl apply -f deployment.yml"
