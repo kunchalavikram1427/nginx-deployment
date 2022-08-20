@@ -6,11 +6,11 @@ pipeline {
     stages {
         stage('Get Pods') {
             steps {
-                sh "cat $my_kubeconfig"
-//                 sh "kubectl --kubeconfig=$my_kubeconfig  get pods"
-//                 sh "kubectl --kubeconfig=$my_kubeconfig delete -f deployment.yml"
-//                 sh "sleep 10"
-//                 sh "kubectl --kubeconfig=$my_kubeconfig  get pods,svc"
+                sh "cat $my_kubeconfig > ./kube/config"
+                sh "kubectl get pods"
+                sh "kubectl apply -f deployment.yml"
+                sh "sleep 10"
+                sh "kubectl get pods,svc"
             }
         }
     }
